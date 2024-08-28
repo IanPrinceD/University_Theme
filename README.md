@@ -116,5 +116,261 @@
 
 ### WordPress pre-build function
 
-- `<?php bloginfo('name'); ?>` : Displays the Site Title set in your WordPress settings.
-- `<?php bloginfo('description'); ?>` : Displays the Tagline (site description) from your settings.
+<details>
+<summary><strong>bloginfo('name')</strong></summary>
+
+**Purpose:**
+>`bloginfo('name')` retrieves and displays the name of your WordPress site, which is set in the General Settings of the WordPress admin panel. This is typically used to display the site title in the header or other prominent locations.
+
+**Usage:**
+>Commonly used in the `header.php` template or anywhere you want to show the site name.
+
+**Example in Practice:**
+```
+<?php if ( have_posts() ) : ?>
+    <?php while ( have_posts() ) : the_post(); ?>
+        <!-- Display post content -->
+    <?php endwhile; ?>
+<?php endif; ?>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>bloginfo('description')</strong></summary>
+
+**Purpose:**
+>`bloginfo('description')` retrieves and displays the tagline or site description, also set in the General Settings of the WordPress admin panel. This is usually a short description or slogan for the site.
+
+**Usage:**
+>Typically used alongside the site name in the header to display the site’s tagline.
+
+**Example in Practice:**
+```
+<p><?php bloginfo('description'); ?></p>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>have_posts()</strong></summary>
+
+**Purpose:**
+>This function checks if there are any posts available to display. It returns `true` if there are posts, and `false` if there are no more posts to process.
+
+**Usage:**
+>It's typically used in the condition of a `while` loop to iterate over posts.
+
+**Example in Practice:**
+```
+<?php if ( have_posts() ) : ?>
+    <?php while ( have_posts() ) : the_post(); ?>
+        <!-- Display post content -->
+    <?php endwhile; ?>
+<?php endif; ?>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>the_posts()</strong></summary>
+
+**Purpose:**
+>This function sets up the post data for the current post in the Loop. It prepares global variables like `$post`, so template tags like `the_title()` and `the_content()` can output the correct information for the current post.
+
+**Usage:**
+>It’s usually called right after `have_posts()` in the loop.
+
+**Example in Practice:**
+```
+<?php while ( have_posts() ) : the_post(); ?>
+    <!-- Display post content -->
+<?php endwhile; ?>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>the_title()</strong></summary>
+
+**Purpose:**
+>This function displays the title of the current post within the loop.
+
+**Usage:**
+>It’s used within the loop to output the post's title.
+
+**Example in Practice:**
+```
+<h2><?php the_title(); ?></h2>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>the_content()</strong></summary>
+
+**Purpose:**
+>This function displays the content of the current post.
+
+**Usage:**
+>It’s used within the loop to output the post's content.
+
+**Example in Practice:**
+```
+<div><?php the_content(); ?></div>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>the_permalink()</strong></summary>
+
+**Purpose:**
+>`the_permalink()` generates and displays the permanent URL (permalink) for the current post or page within the WordPress Loop. It ensures that each piece of content has a unique and consistent URL that users can click to view the full content.
+
+**Usage:**
+>Typically used within a loop, `the_permalink()` is often wrapped in an anchor (`<a>`) tag to create a clickable link that directs visitors to the specific post or page.
+
+**Example in Practice:**
+```
+<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_header()</strong></summary>
+
+**Purpose:**
+>The `get_header()` function loads the header template file (header.php) for your WordPress theme. It's used to include the site's header, which typically contains the logo, navigation menu, and other elements that appear at the top of every page.
+
+**Usage:**
+>This functions are typically called within theme files (e.g., `index.php`, `single.php`, `page.php`) to ensure that the header and footer sections are consistently included on every page of the website.
+
+**Example in Practice:**
+```
+<?php get_header(); ?>
+<!-- Page Content -->
+<?php get_footer(); ?>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_footer()</strong></summary>
+
+**Purpose:**
+>The `get_footer()` function loads the footer template file (footer.php) for your WordPress theme. It's used to include the site's footer, which usually contains the copyright notice, social media links, and other elements that appear at the bottom of every page.
+
+**Usage:**
+>This functions are typically called within theme files (e.g., `index.php`, `single.php`, `page.php`) to ensure that the header and footer sections are consistently included on every page of the website.
+
+**Example in Practice:**
+```
+<?php get_header(); ?>
+<!-- Page Content -->
+<?php get_footer(); ?>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>wp_head()</strong></summary>
+
+**Purpose:**
+>`wp_head()` is a crucial WordPress function that hooks into the `wp_head` action and outputs content in the `<head>` section of your HTML document. This function is typically used to include metadata, links to stylesheets, scripts, and other elements necessary for your site.
+
+**Usage:**
+>Called within the `header.php` template, usually just before the closing `</head>` tag, to ensure that plugins and themes can properly insert required elements into the `<head>`.
+
+**Example in Practice:**
+```
+<head>
+    <?php wp_head(); ?>
+</head>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>wp_footer()</strong></summary>
+
+**Purpose:**
+>`wp_footer()` is similar to `wp_head()`, but it hooks into the `wp_footer` action and outputs content just before the closing `</body>` tag. It is commonly used to include JavaScript files, tracking codes, or other scripts that should be loaded at the end of the page for performance reasons.
+
+**Usage:**
+>Called within the `footer.php` template, just before the closing `</body>` tag.
+
+**Example in Practice:**
+```
+<?php wp_footer(); ?>
+</body>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>add_action('a', 'b')</strong></summary>
+
+**Purpose:**
+>`add_action('a', 'b')` registers a callback function `b` to be executed at a specific action hook `a`. This allows you to insert custom code at various points during the execution of WordPress.
+
+**Usage:**
+>Commonly used in `functions.php` or plugins to add custom functionality at predefined points in the WordPress lifecycle.
+
+**Example in Practice:**
+```
+function my_custom_function() {
+    echo 'Hello, World!';
+}
+add_action('wp_footer', 'my_custom_function');
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_stylesheet_uri()</strong></summary>
+
+**Purpose:**
+>`get_stylesheet_uri()` returns the URL of the current theme's `style.css` file. This is useful for linking to the main stylesheet of the theme.
+
+**Usage:**
+>Commonly used in the `header.php` file to link the theme's stylesheet.
+
+**Example in Practice:**
+```
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" />
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>wp_enqueue_style()</strong></summary>
+
+**Purpose:**
+>`wp_enqueue_style()` safely registers and enqueues stylesheets in WordPress. It ensures that styles are loaded in the correct order and prevents conflicts with other stylesheets or plugins.
+
+**Usage:**
+>Typically used in the functions.php file to load stylesheets for the theme or plugins.
+
+**Example in Practice:**
+```
+function my_theme_styles() {
+    wp_enqueue_style('main-styles', get_stylesheet_uri());
+}
+add_action('wp_enqueue_scripts', 'my_theme_styles');
+```
+</details>
