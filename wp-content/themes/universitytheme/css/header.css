@@ -1,0 +1,65 @@
+.header {
+ width: 100%;
+}
+
+.header-container {
+ max-width: 112rem;
+ width: 100%;
+ margin-inline: auto;
+ padding-inline: 3rem;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding-block: 1.5rem;
+}
+
+.nav-container,
+.nav-wrapper,
+.nav-utilities {
+ display: flex;
+ align-items: center;
+}
+
+.links,
+.btn:not(:last-child),
+.search-trigger:not(:last-child) {
+ margin-right: 1rem;
+}
+
+.link-items,
+.btn,
+.search-trigger {
+ color: #000;
+ font-size: 1.2rem;
+ cursor: pointer;
+}
+
+.link-items:hover {
+ color: rgb(228, 151, 50);
+}
+
+.btn {
+ padding: .5rem 1rem;
+}
+
+.btn-login,
+.btn-sign-up {
+ border-radius: .2rem;
+ color: #fff;
+}
+
+.btn-login {
+ background-color: orange;
+}
+
+.btn-sign-up {
+ background-color: orangered;
+}
+
+.btn-login:hover {
+ background-color: orangered;
+}
+
+.btn-sign-up:hover {
+ background-color: orange;
+}

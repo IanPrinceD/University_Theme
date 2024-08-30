@@ -94,7 +94,7 @@
 1. Edit `style.css` to Include Theme Details:
    - Open the `style.css` file you created earlier.
    - At the very top of the file, add a comment block with the following information:
-      ```
+      ```php
       /*
       Theme Name: My Theme
       Author: Your Name
@@ -126,7 +126,7 @@
 >Commonly used in the `header.php` template or anywhere you want to show the site name.
 
 **Example in Practice:**
-```
+```php
 <?php if ( have_posts() ) : ?>
     <?php while ( have_posts() ) : the_post(); ?>
         <!-- Display post content -->
@@ -147,7 +147,7 @@
 >Typically used alongside the site name in the header to display the site’s tagline.
 
 **Example in Practice:**
-```
+```php
 <p><?php bloginfo('description'); ?></p>
 ```
 </details>
@@ -164,7 +164,7 @@
 >It's typically used in the condition of a `while` loop to iterate over posts.
 
 **Example in Practice:**
-```
+```php
 <?php if ( have_posts() ) : ?>
     <?php while ( have_posts() ) : the_post(); ?>
         <!-- Display post content -->
@@ -185,7 +185,7 @@
 >It’s usually called right after `have_posts()` in the loop.
 
 **Example in Practice:**
-```
+```php
 <?php while ( have_posts() ) : the_post(); ?>
     <!-- Display post content -->
 <?php endwhile; ?>
@@ -204,7 +204,7 @@
 >It’s used within the loop to output the post's title.
 
 **Example in Practice:**
-```
+```php
 <h2><?php the_title(); ?></h2>
 ```
 </details>
@@ -221,7 +221,7 @@
 >It’s used within the loop to output the post's content.
 
 **Example in Practice:**
-```
+```php
 <div><?php the_content(); ?></div>
 ```
 </details>
@@ -238,7 +238,7 @@
 >Typically used within a loop, `the_permalink()` is often wrapped in an anchor (`<a>`) tag to create a clickable link that directs visitors to the specific post or page.
 
 **Example in Practice:**
-```
+```php
 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 ```
 </details>
@@ -255,7 +255,7 @@
 >This functions are typically called within theme files (e.g., `index.php`, `single.php`, `page.php`) to ensure that the header and footer sections are consistently included on every page of the website.
 
 **Example in Practice:**
-```
+```php
 <?php get_header(); ?>
 <!-- Page Content -->
 <?php get_footer(); ?>
@@ -274,7 +274,7 @@
 >This functions are typically called within theme files (e.g., `index.php`, `single.php`, `page.php`) to ensure that the header and footer sections are consistently included on every page of the website.
 
 **Example in Practice:**
-```
+```php
 <?php get_header(); ?>
 <!-- Page Content -->
 <?php get_footer(); ?>
@@ -293,7 +293,7 @@
 >Called within the `header.php` template, usually just before the closing `</head>` tag, to ensure that plugins and themes can properly insert required elements into the `<head>`.
 
 **Example in Practice:**
-```
+```php
 <head>
     <?php wp_head(); ?>
 </head>
@@ -312,7 +312,7 @@
 >Called within the `footer.php` template, just before the closing `</body>` tag.
 
 **Example in Practice:**
-```
+```php
 <?php wp_footer(); ?>
 </body>
 ```
@@ -324,13 +324,17 @@
 <summary><strong>add_action('a', 'b')</strong></summary>
 
 **Purpose:**
->`add_action('a', 'b')` registers a callback function `b` to be executed at a specific action hook `a`. This allows you to insert custom code at various points during the execution of WordPress.
+>`add_action('a', 'b')` is a core WordPress function that allows you to hook your custom function (`b`) into a specific action (`a`) during the WordPress lifecycle. This function is a key part of WordPress's hook system, which enables you to execute custom code at predefined points (actions) in WordPress's execution process.
+
+**Parameter**
+- `'a'` **(Action Hook)** : The name of the action hook where your function should be executed. Action hooks are predefined points in WordPress where you can "hook" your custom functions. Examples include `wp_head`, `wp_footer`, `init`, and many others.
+- `'b'` **(Callback Function)** : The name of the custom function you want to execute when the action hook (`'a'`) is reached. This function can perform any task, such as adding content to the page, modifying settings, or interacting with the database.
 
 **Usage:**
->Commonly used in `functions.php` or plugins to add custom functionality at predefined points in the WordPress lifecycle.
+>`add_action()` is typically used in the `functions.php` file of your theme or within a plugin to add custom functionality at specific points in the WordPress workflow.
 
 **Example in Practice:**
-```
+```php
 function my_custom_function() {
     echo 'Hello, World!';
 }
@@ -350,7 +354,7 @@ add_action('wp_footer', 'my_custom_function');
 >Commonly used in the `header.php` file to link the theme's stylesheet.
 
 **Example in Practice:**
-```
+```php
 <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" />
 ```
 </details>
@@ -367,10 +371,54 @@ add_action('wp_footer', 'my_custom_function');
 >Typically used in the functions.php file to load stylesheets for the theme or plugins.
 
 **Example in Practice:**
-```
+```php
 function my_theme_styles() {
     wp_enqueue_style('main-styles', get_stylesheet_uri());
 }
 add_action('wp_enqueue_scripts', 'my_theme_styles');
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_theme_file_uri()</strong></summary>
+
+**Purpose:**
+>`get_theme_file_uri('<file_path>')` returns the URL to a file within the current theme directory. This is useful for referencing theme assets like images, scripts, or stylesheets. If no `<file_path>` is provided, it returns the URL of the theme's root directory.
+
+**Usage:**
+>Commonly used when you need to link to a specific file in your theme, such as an image or a script.
+
+**Example in Practice:**
+```php
+<img src="<?php echo get_theme_file_uri('images/logo.png'); ?>" alt="Site Logo">
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>wp_enqueue_script('a', 'b', 'c', 'd', 'e')</strong></summary>
+
+**Purpose:**
+>`wp_enqueue_script()` is used to safely register and enqueue JavaScript files in WordPress. This function helps manage the loading order and dependencies of scripts, ensuring they load correctly and do not conflict with other scripts.
+
+**Parameter**
+- `'a'` : The handle or name of the script.
+- `'b'` : The URL to the script (can be a full URL or a call to a function like `get_theme_file_uri()`).
+- `'c'` : An array of dependencies, which are other scripts that need to load before this one (e.g., `array('jquery')`).
+- `'d'` : The version number of the script (useful for cache busting).
+- `'e'` : A boolean value that determines whether the script should be loaded in the footer (`true`) or in the header (`false`).
+
+**Usage:**
+>Typically used in the `functions.php` file to load JavaScript files required by your theme or plugin.
+
+**Example in Practice:**
+```php
+function my_theme_scripts() {
+    wp_enqueue_script('custom-script', get_theme_file_uri('js/custom.js'), array('jquery'), '1.0.0', true);
+}
+add_action('wp_enqueue_scripts', 'my_theme_scripts');
 ```
 </details>
