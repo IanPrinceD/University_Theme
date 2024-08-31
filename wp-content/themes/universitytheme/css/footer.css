@@ -1,0 +1,100 @@
+.footer {
+ width: 100%;
+ text-transform: capitalize;
+ background-color: var(--secondary-color);
+}
+
+.footer-wrapper,
+.footer-copyright-wrapper,
+.footer-link-item,
+.footer-contact-header,
+.email-link,
+.social-icon,
+.newsletter-body,
+.newsletter-body-span,
+.copyright,
+.copyright-span,
+.copyright-all-rights,
+.btn-submit {
+ color: var(--global-secondary-color);
+}
+
+.footer-link-item,
+.email-link,
+.newsletter-body,
+.copyright {
+ font-weight: 200;
+}
+
+.footer-wrapper {
+ display: flex;
+ align-items: start;
+ justify-content: space-between;
+ gap: .5rem;
+ padding-block: 3rem;
+}
+
+.footer-logo-container,
+.footer-nav-container,
+.footer-info-container,
+.newsletter-container {
+ width: 25%;
+}
+
+.footer-links:hover:before {
+ content: "-";
+ color: var(--global-secondary-color)
+}
+
+.footer-contact-header,
+.newsletter-body {
+ margin-bottom: .5rem;
+}
+
+.footer-contact-info-wrapper {
+ margin-bottom: 2rem;
+}
+
+.fa-envelope,
+.social-icon:not(:last-child) {
+ margin-right: 1rem;
+}
+
+.newsletter-form {
+ display: flex;
+ flex-direction: column;
+}
+
+.newsletter-email,
+.newsletter-name,
+.select-role,
+.btn-submit {
+ margin-block: .5rem;
+ padding: .5rem;
+}
+
+.newsletter-email::placeholder,
+.newsletter-name::placeholder {
+ color: var(--primary-color);
+ text-transform: capitalize;
+}
+
+.btn-submit {
+ width: 50%;
+ font-weight: 600;
+ letter-spacing: .2rem;
+ background-color: var(--tertiary-color);
+ text-transform: capitalize;
+ border: .2rem solid var(--global-secondary-color);
+}
+
+.btn-submit:hover {
+ background-color: var(--secondary-color);
+}
+
+.copyright {
+ text-align: center;
+ margin-top: 2rem;
+ letter-spacing: .5rem;
+ font-weight: 300;
+}

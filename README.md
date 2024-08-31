@@ -422,3 +422,116 @@ function my_theme_scripts() {
 add_action('wp_enqueue_scripts', 'my_theme_scripts');
 ```
 </details>
+
+<br>
+
+<details>
+<summary><strong>wp_enqueue_script('a', 'b', 'c', 'd', 'e')</strong></summary>
+
+**Purpose:**
+>`wp_enqueue_script()` is used to safely register and enqueue JavaScript files in WordPress. This function helps manage the loading order and dependencies of scripts, ensuring they load correctly and do not conflict with other scripts.
+
+**Parameter**
+- `'a'` : The handle or name of the script.
+- `'b'` : The URL to the script (can be a full URL or a call to a function like `get_theme_file_uri()`).
+- `'c'` : An array of dependencies, which are other scripts that need to load before this one (e.g., `array('jquery')`).
+- `'d'` : The version number of the script (useful for cache busting).
+- `'e'` : A boolean value that determines whether the script should be loaded in the footer (`true`) or in the header (`false`).
+
+**Usage:**
+>Typically used in the `functions.php` file to load JavaScript files required by your theme or plugin.
+
+**Example in Practice:**
+```php
+function my_theme_scripts() {
+    wp_enqueue_script('custom-script', get_theme_file_uri('js/custom.js'), array('jquery'), '1.0.0', true);
+}
+add_action('wp_enqueue_scripts', 'my_theme_scripts');
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>after_setup_theme</strong></summary>
+
+**Purpose:**
+>The `after_setup_theme` action hook is used to execute code after the theme has been set up. It allows you to add theme support for various features, such as post thumbnails or custom logos, and initialize other theme-related functionality.
+
+**Usage:**
+>You can use this hook to add theme support features or initialize theme settings. Typically, you would add functions to this hook in your theme’s `functions.php` file.
+
+**Example in Practice:**
+```php
+function mytheme_setup() {
+    // Add theme support for post thumbnails
+    add_theme_support('post-thumbnails');
+    
+    // Register navigation menus
+    register_nav_menus(array(
+        'primary' => __('Primary Menu', 'mytheme'),
+        'footer'  => __('Footer Menu', 'mytheme'),
+    ));
+}
+add_action('after_setup_theme', 'mytheme_setup');
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>add_theme_support()</strong></summary>
+
+**Purpose:**
+>The `add_theme_support()` function is used to enable various features and functionality for your WordPress theme. It allows you to specify which features your theme supports, such as post thumbnails, custom headers, or HTML5 markup.
+
+**Parameter**
+>- `$feature` (string) – The feature you want to add support for. This can be a string (e.g., 'post-thumbnails') or an array of options.
+>- `$args` (optional) – An array of arguments or options for the feature (used with certain features).
+
+**Usage:**
+>Call this function within the `after_setup_theme` hook to ensure it is executed at the appropriate time.
+
+**Example in Practice:**
+```php
+function mytheme_setup() {
+    // Enable support for post thumbnails
+    add_theme_support('post-thumbnails');
+    
+    // Enable support for custom logo
+    add_theme_support('custom-logo');
+    
+    // Enable HTML5 support for certain elements
+    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
+}
+add_action('after_setup_theme', 'mytheme_setup');
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>site_url()</strong></summary>
+
+**Purpose:**
+>The `site_url()` function returns the URL of the WordPress site. It can be used to generate URLs relative to the WordPress installation directory.
+
+**Parameter**
+>- `$path` (string) – Optional. The relative path to append to the site URL.
+>- `$scheme` (string) – Optional. The scheme to use for the URL. Can be 'http', 'https', 'relative', or 'admin'.
+
+**Usage:**
+>Use this function to get the base URL of your WordPress site or to generate URLs dynamically. It’s useful for creating links in your theme or plugin code.
+
+**Example in Practice:**
+```php
+// Get the site URL
+$site_url = site_url();
+
+// Get the URL for a specific path
+$about_page_url = site_url('/about/');
+
+// Get the admin URL with HTTPS
+$admin_url = site_url('/wp-admin/', 'https');
+```
+</details>
