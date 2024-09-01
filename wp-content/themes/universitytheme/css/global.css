@@ -40,6 +40,10 @@ h6 {
  font-family: var(--secondary-font);
 }
 
+h1 {
+ font-size: 7rem;
+}
+
 .header-container,
 .footer-container,
 .main-container {

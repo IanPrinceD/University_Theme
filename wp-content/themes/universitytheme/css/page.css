@@ -1,0 +1,46 @@
+.page-banner {
+ margin-top: 15.5rem;
+}
+
+.page-banner__bg-banner {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 36rem;
+ background-color: var(--secondary-color);
+ z-index: -1;
+}
+
+.page-banner__title,
+.page-banner__intro p {
+ color: var(--global-secondary-color);
+}
+
+.page-banner__intro p {
+ font-size: 2rem;
+}
+
+.metabox p {
+ display: flex;
+}
+
+.fa-home {
+ color: var(--global-secondary-color);
+}
+
+.metabox__blog-home-link,
+.metabox__main {
+ color: var(--global-secondary-color);
+ padding: .6rem 1rem;
+}
+
+.metabox__blog-home-link {
+ background-color: var(--primary-color);
+ border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.metabox__main {
+ background-color: var(--tertiary-color);
+ border-radius: 0 0.5rem 0.5rem 0;
+}
