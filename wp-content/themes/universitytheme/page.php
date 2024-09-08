@@ -33,7 +33,7 @@ while (have_posts()) {
         'child_of' => get_the_ID()
       ));
 
-      if ($theParentPage or $testIfParentPageArray) { ?>
+      if ($theParentPage || $testIfParentPageArray) { ?>
         <div class="page-links">
           <h2 class="page-links__title"><a href="<?php echo get_permalink($theParentPage) ?>"><?php echo get_the_title($theParentPage); ?></a></h2>
           <ul class="min-list">
@@ -53,6 +53,9 @@ while (have_posts()) {
         </div>
       <?php } ?>
 
+      <div class="generic-content">
+        <?php the_content(); ?>
+      </div>
       <div class="generic-content">
         <?php the_content(); ?>
       </div>

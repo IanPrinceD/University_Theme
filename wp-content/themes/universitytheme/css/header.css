@@ -2,7 +2,7 @@
  width: 100%;
  position: fixed;
  top: 0;
- /* background-color: white; */
+ background-color: white;
 }
 
 .header-container {
@@ -25,14 +25,23 @@
  margin-right: 1rem;
 }
 
+.link-items:hover {
+ color: rgb(228, 151, 50);
+}
+
+.link-item:hover {
+ color: var(--tertiary-color);
+ font-weight: 400;
+}
+
+.current-menu-item a {
+ color: var(--tertiary-color);
+}
+
 .link-item,
 .btn,
 .search-trigger {
  cursor: pointer;
-}
-
-.link-items:hover {
- color: rgb(228, 151, 50);
 }
 
 .btn {
@@ -65,9 +74,4 @@
  border: .1rem solid var(--tertiary-color);
  color: var(--tertiary-color);
  padding: .4rem .9rem;
-}
-
-.link-item:hover {
- color: var(--tertiary-color);
- font-weight: 400;
 }

@@ -14,6 +14,11 @@ add_action('wp_enqueue_scripts', 'my_theme_assets');
 
 function my_theme_features()
 {
+ // Setting up menu which can be controlled in the wp-admin
+ // register_nav_menu('headerMenu', 'Header Menu');
+ // register_nav_menu('footerMenuPrimary', 'Main Footer Menu');
+ // register_nav_menu('footerMenuSecondary', 'Secondary Footer Menu');
+ 
  add_theme_support('title-tag');
 }
 add_action('after_setup_theme', 'my_theme_features');

@@ -139,30 +139,6 @@
 
 **Example in Practice:**
 ```php
-<?php if ( have_posts() ) : ?>
-    <?php while ( have_posts() ) : the_post(); ?>
-        <!-- Display post content -->
-    <?php endwhile; ?>
-<?php endif; ?>
-```
-</details>
-
-<br>
-
-<details>
-<summary><strong>have_posts()</strong></summary>
-
-**Purpose:**
->This function checks if there are any posts available to display. It returns `true` if there are posts, and `false` if there are no more posts to process.
-
-**Parameters:**
->This function does not accept any parameters.
-
-**Usage:**
->It's typically used in the condition of a `while` loop to iterate over posts.
-
-**Example in Practice:**
-```php
 // Display the site name
 bloginfo('name');
 
@@ -183,7 +159,30 @@ bloginfo('admin_email');
 
 // Display the character encoding of the site
 bloginfo('charset');
+```
+</details>
 
+<br>
+
+<details>
+<summary><strong>have_posts()</strong></summary>
+
+**Purpose:**
+>This function checks if there are any posts available to display. It returns `true` if there are posts, and `false` if there are no more posts to process.
+
+**Parameters:**
+>This function does not accept any parameters.
+
+**Usage:**
+>It's typically used in the condition of a `while` loop to iterate over posts.
+
+**Example in Practice:**
+```php
+<?php if ( have_posts() ) : ?>
+    <?php while ( have_posts() ) : the_post(); ?>
+        <!-- Display post content -->
+    <?php endwhile; ?>
+<?php endif; ?>
 ```
 </details>
 
