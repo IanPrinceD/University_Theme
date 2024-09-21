@@ -21,7 +21,6 @@
                                    'theme_location' => 'headerMenu'
                               ));
                               ?>
-
                          </nav>
                          <div class="nav-utilities">
                               <p class="login"><a href="#" class="btn btn-login">Login</a></p>
