@@ -6,7 +6,6 @@
 
 .footer-wrapper,
 .footer-copyright-wrapper,
-.footer-link-item,
 .footer-contact-header,
 .email-link,
 .social-icon,
@@ -19,7 +18,6 @@
  color: var(--global-secondary-color);
 }
 
-.footer-link-item,
 .email-link,
 .newsletter-body,
 .copyright {
@@ -39,11 +37,6 @@
 .footer-info-container,
 .newsletter-container {
  width: 25%;
-}
-
-.footer-links:hover:before {
- content: "-";
- color: var(--global-secondary-color)
 }
 
 .footer-contact-header,
@@ -97,4 +90,21 @@
  margin-top: 2rem;
  letter-spacing: .5rem;
  font-weight: 300;
+}
+
+.footer-nav-container div .menu {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ justify-content: space-between;
+}
+
+.footer-nav-container div .menu .menu-item a{
+ color: var(--global-secondary-color);
+ font-weight: 300;
+}
+
+.footer-nav-container div .menu .menu-item a:hover::before {
+ content: '- ';
+ color: var(--global-secondary-color)
 }

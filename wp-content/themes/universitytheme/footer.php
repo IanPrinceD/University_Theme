@@ -8,23 +8,10 @@
      </a>
     </div>
     <nav class="footer-nav-container">
-     <ul class="footer-nav-wrapper">
-      <li class="footer-links">
-       <a href="#" class="footer-link-item">search</a>
-      </li>
-      <li class="footer-links">
-       <a href="#" class="footer-link-item">faqs</a>
-      </li>
-      <li class="footer-links">
-       <a href="#" class="footer-link-item">trade</a>
-      </li>
-      <li class="footer-links">
-       <a href="#" class="footer-link-item">terms & privacy</a>
-      </li>
-      <li class="footer-links">
-       <a href="#" class="footer-link-item">shipping & service</a>
-      </li>
-     </ul>
+     <?php wp_nav_menu(array(
+      'theme_location' => 'footerMenuPrimary'
+     )); 
+     ?>
     </nav>
     <div class="footer-info-container">
      <div class="footer-contact-info-wrapper">

@@ -11,22 +11,22 @@
 .utility-container,
 .nav-container,
 .nav-utilities,
-.menu {
+.nav-container div .menu {
  display: flex;
  justify-content: space-between;
  align-items: center;
 }
 
-.menu .menu-item {
+.nav-container div .menu .menu-item {
  padding: 0.5rem 1rem;
 }
 
-.menu .menu-item a {
+.nav-container div .menu .menu-item a {
  position: relative;
  width: max-content;
 }
 
-.menu .menu-item a::after {
+.nav-container div .menu .menu-item a::after {
  content: '';
  background-color: var(--tertiary-color);
  border-radius: 10px;
@@ -38,32 +38,32 @@
  left: 0;
 }
 
-.menu .menu-item a:hover::after {
+.nav-container div .menu .menu-item a:hover::after {
  width: 100%;
 }
 
-.menu .menu-item .sub-menu {
+.nav-container div .menu .menu-item .sub-menu {
  position: absolute;
  display: none;
 }
 
-.menu .menu-item:hover .sub-menu {
+.nav-container div .menu .menu-item:hover .sub-menu {
  display: block;
  padding-block: 0.5rem;
  background-color: var(--global-secondary-color);
  border-radius: .2rem;
 }
 
-.menu .menu-item:hover .sub-menu .menu-item {
+.nav-container div .menu .menu-item:hover .sub-menu .menu-item {
  padding-block: 0.5rem;
 }
 
-.menu .menu-item .sub-menu .menu-item a {
+.nav-container div .menu .menu-item .sub-menu .menu-item a {
  position: relative;
  width: max-content;
 }
 
-.menu .menu-item .sub-menu .menu-item a::after {
+.nav-container div .menu .menu-item .sub-menu .menu-item a::after {
  content: '';
  background-color: var(--secondary-color);
  border-radius: 10px;
@@ -75,7 +75,7 @@
  left: 0;
 }
 
-.menu .menu-item .sub-menu .menu-item a:hover::after {
+.nav-container div .menu .menu-item .sub-menu .menu-item a:hover::after {
  width: 100%;
 }
 
