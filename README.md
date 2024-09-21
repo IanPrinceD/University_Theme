@@ -740,3 +740,122 @@ $specific_title = get_the_title(42);
 echo 'The title of post 42 is: ' . $specific_title;
 ```
 </details>
+
+<br>
+
+<details>
+<summary><strong>language_attributes()</strong></summary>
+
+**Purpose:**
+>Outputs the language attributes for the `<html>` tag in your theme, usually including the `lang` attribute and other optional attributes like `dir` (for text direction).
+
+**Parameter**
+>This function does not accept any parameters.
+
+**Usage:**
+>Use this function to make your site more accessible by providing appropriate language and text direction attributes. It is typically used in the opening `<html>` tag of your theme's `header.php` file.
+
+**Example in Practice:**
+```php
+<html <?php language_attributes(); ?>>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>body_class()</strong></summary>
+
+**Purpose:**
+>Adds custom classes to the `<body>` tag, allowing you to style specific pages, posts, or contexts (e.g., single post view, category archive) more easily.
+
+**Parameter**
+>`$class` (optional) – Additional classes you want to add to the body tag. Can be a string or an array of class names.
+
+**Usage:**
+>Always include this function in your `<body>` tag to add context-specific classes that help with styling and JavaScript targeting. This improves flexibility when styling pages or adding custom behavior.
+
+**Example in Practice:**
+```php
+<body <?php body_class(); ?>>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>register_nav_menu('location', 'description')</strong></summary>
+
+**Purpose:**
+>Registers a navigation menu location in WordPress. You can then assign a custom menu to this location from the WordPress admin dashboard.
+
+**Parameter**
+>- `location` (string): A unique identifier for the menu location (e.g., 'primary', 'footer').
+>- `description` (string): A descriptive name for the menu location, which is displayed in the WordPress admin.
+
+**Usage:**
+>- Use this function in your theme's `functions.php` file to register any custom navigation locations.
+>- Ensure the `location` is unique to avoid conflicts.
+>- Combine this with `wp_nav_menu()` to display the menu in your theme template.
+
+**Example in Practice:**
+```php
+function register_my_menus() {
+    register_nav_menu('primary', 'Primary Menu');
+}
+add_action('init', 'register_my_menus');
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>is_page()</strong></summary>
+
+**Purpose:**
+>Checks if the current page matches a given page, either by ID, slug, or title. It is useful for conditionally loading content based on the current page.
+
+**Parameter**
+>- `$page` (optional): The ID, slug, or title of the page to check. If no parameter is passed, it checks if the current view is a page.
+
+**Usage:**
+>- Use `is_page()` in template files or conditional statements when you need to load different content or styles for specific pages.
+>- Avoid using too many specific `is_page()` conditions to keep your code maintainable.
+
+**Example in Practice:**
+```php
+if ( is_page(42) ) {
+    // The page ID is 42
+}
+
+if ( is_page('about') ) {
+    // The page slug is 'about'
+}
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_page_by_path()</strong></summary>
+
+**Purpose:**
+>Retrieves a page object based on the page’s path (slug).
+
+**Parameter**
+>- `$page_path` (string): The path (slug) of the page.
+>- `$output` (optional): The required return type. Use `OBJECT` for the full page object, or `ARRAY_A` for an associative array.
+>- `$post_type` (optional): The post type to query. Default is 'page'.
+
+**Usage:**
+>- Use this when you need to retrieve a page based on its slug instead of ID or title.
+>- Always check if the returned page object is valid before using it, to avoid errors.
+
+**Example in Practice:**
+```php
+$page = get_page_by_path('about');
+if ( $page ) {
+    // Do something with the page object
+}
+```
+</details>
