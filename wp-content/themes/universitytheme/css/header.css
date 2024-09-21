@@ -2,76 +2,110 @@
  width: 100%;
  position: fixed;
  top: 0;
- background-color: white;
+ left: 0;
+ background-color: var(--global-secondary-color);
+ padding-block: 1rem;
 }
 
-.header-container {
- display: flex;
- align-items: center;
- justify-content: space-between;
-}
-
+.header-container,
+.utility-container,
 .nav-container,
-.nav-wrapper,
-.nav-utilities {
+.nav-utilities,
+.menu {
  display: flex;
+ justify-content: space-between;
  align-items: center;
- column-gap: .5rem;
 }
 
-.links,
-.btn:not(:last-child),
-.search-trigger:not(:last-child) {
- margin-right: 1rem;
+.menu .menu-item {
+ padding: 0.5rem 1rem;
 }
 
-.link-items:hover {
- color: rgb(228, 151, 50);
+.menu .menu-item a {
+ position: relative;
+ width: max-content;
 }
 
-.link-item:hover {
- color: var(--tertiary-color);
- font-weight: 400;
+.menu .menu-item a::after {
+ content: '';
+ background-color: var(--tertiary-color);
+ border-radius: 10px;
+ position: absolute;
+ transition: 100ms;
+ height: 2px;
+ width: 0;
+ bottom: 0;
+ left: 0;
 }
 
-.current-menu-item a {
- color: var(--tertiary-color);
+.menu .menu-item a:hover::after {
+ width: 100%;
 }
 
-.link-item,
-.btn,
-.search-trigger {
- cursor: pointer;
+.menu .menu-item .sub-menu {
+ position: absolute;
+ display: none;
 }
 
-.btn {
- padding: .5rem 1rem;
-}
-
-.btn-login,
-.btn-sign-up {
+.menu .menu-item:hover .sub-menu {
+ display: block;
+ padding-block: 0.5rem;
+ background-color: var(--global-secondary-color);
  border-radius: .2rem;
- color: var(--global-secondary-color);
 }
 
-.btn-login {
+.menu .menu-item:hover .sub-menu .menu-item {
+ padding-block: 0.5rem;
+}
+
+.menu .menu-item .sub-menu .menu-item a {
+ position: relative;
+ width: max-content;
+}
+
+.menu .menu-item .sub-menu .menu-item a::after {
+ content: '';
+ background-color: var(--secondary-color);
+ border-radius: 10px;
+ position: absolute;
+ transition: 100ms;
+ height: 2px;
+ width: 0;
+ bottom: 0;
+ left: 0;
+}
+
+.menu .menu-item .sub-menu .menu-item a:hover::after {
+ width: 100%;
+}
+
+.nav-utilities .login,
+.nav-utilities .signup,
+.search-trigger .fa-magnifying-glass {
+ padding: 0.5rem 1rem;
+}
+
+.login a,
+.signup a {
+ padding: 0.5rem 2rem;
+ color: var(--global-secondary-color);
+ border-radius: 5px;
+}
+
+.login a {
  background-color: var(--primary-color);
 }
 
-.btn-sign-up {
+.signup a {
  background-color: var(--tertiary-color);
 }
 
-.btn-login:hover {
- background-color: var(--global-secondary-color);
- border: .1rem solid var(--primary-color);
- color: var(--primary-color);
- padding: .4rem .9rem;
+.login a:hover {
+ background-color: var(--tertiary-color);
+ transition: 300ms;
 }
 
-.btn-sign-up:hover {
- background-color: var(--global-secondary-color);
- border: .1rem solid var(--tertiary-color);
- color: var(--tertiary-color);
- padding: .4rem .9rem;
+.signup a:hover {
+ background-color: var(--primary-color);
+ transition: 300ms;
 }
