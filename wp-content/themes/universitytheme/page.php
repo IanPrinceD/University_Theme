@@ -56,9 +56,6 @@ while (have_posts()) {
       <div class="generic-content">
         <?php the_content(); ?>
       </div>
-      <div class="generic-content">
-        <?php the_content(); ?>
-      </div>
   </div>
 
 <?php }

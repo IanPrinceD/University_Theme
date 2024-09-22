@@ -24,6 +24,8 @@
 .nav-container div .menu .menu-item a {
  position: relative;
  width: max-content;
+ font-weight: 500;
+ font-size: 1.5rem;
 }
 
 .nav-container div .menu .menu-item a::after {
