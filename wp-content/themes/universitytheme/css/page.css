@@ -1,5 +1,5 @@
 .page-banner {
- margin-top: 15.5rem;
+ margin-top: 20rem;
 }
 
 .page-banner__bg-banner {
@@ -10,7 +10,8 @@
  right: 0;
  width: 100%;
  background-image: url(../screenshot.png);
- height: 36.5rem;
+ background-size: cover;
+ height: 35.5rem;
  filter: brightness(0.5);
  z-index: -1;
 }
@@ -25,12 +26,12 @@
 }
 
 
-
 .page-links {
  float: right;
  width: 30%;
  margin: 0 0 1.5rem 1.5rem;
  position: relative;
+ z-index: 0;
 }
 
 .page-links__title {
@@ -38,6 +39,34 @@
  text-align: center;
  padding-block: 1.5rem;
  margin: 0;
+}
+
+.metabox {
+ margin-bottom: 2rem;
+}
+
+.metabox p {
+ display: flex;
+}
+
+.fa-home {
+ color: var(--global-secondary-color);
+}
+
+.metabox__blog-home-link,
+.metabox__main {
+ color: var(--global-secondary-color);
+ padding: .6rem 1rem;
+}
+
+.metabox__blog-home-link {
+ background-color: var(--primary-color);
+ border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.metabox__main {
+ background-color: var(--tertiary-color);
+ border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .min-list {
@@ -58,4 +87,8 @@
 .min-list li a,
 .page-links__title a {
  color: var(--global-secondary-color);
+}
+
+.page-section {
+ padding-block: 3rem;
 }

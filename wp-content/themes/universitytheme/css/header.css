@@ -58,27 +58,6 @@
  padding-block: 0.5rem;
 }
 
-.nav-container div .menu .menu-item .sub-menu .menu-item a {
- position: relative;
- width: max-content;
-}
-
-.nav-container div .menu .menu-item .sub-menu .menu-item a::after {
- content: '';
- background-color: var(--secondary-color);
- border-radius: 10px;
- position: absolute;
- transition: 100ms;
- height: 2px;
- width: 0;
- bottom: 0;
- left: 0;
-}
-
-.nav-container div .menu .menu-item .sub-menu .menu-item a:hover::after {
- width: 100%;
-}
-
 .nav-utilities .login,
 .nav-utilities .signup,
 .search-trigger .fa-magnifying-glass {
