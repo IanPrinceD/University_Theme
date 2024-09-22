@@ -105,6 +105,7 @@
 }
 
 .footer-nav-container div .menu .menu-item a:hover::before {
- content: '- ';
- color: var(--global-secondary-color)
+ content: '-';
+ color: var(--global-secondary-color);
+ margin-right: 0.5rem;
 }
