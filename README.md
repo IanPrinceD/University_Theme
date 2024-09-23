@@ -859,3 +859,111 @@ if ( $page ) {
 }
 ```
 </details>
+
+<br>
+
+<details>
+<summary><strong>paginate_links()</strong></summary>
+
+**Purpose:**
+>Generates pagination links for paginated posts, archives, or custom queries. It’s commonly used when you have multiple pages of posts or results.
+
+**Parameter**
+>- `$args` (array, optional): An array of arguments to customize the pagination. Some key arguments include:
+>     - `base`: The base URL for pagination links.
+>     - `format`: The format for the pagination links (usually '?paged=%#%').
+>     - `total`: The total number of pages.
+>     - `current`: The current page number.
+>     - `prev_text`: Text for the "previous" link.
+>     - `next_text`: Text for the "next" link.
+>     - `type`: Return type, either `plain`, `array`, or `list`.
+
+**Usage:**
+>- Always check the total number of pages to avoid generating pagination for single-page results.
+>- Use `type => 'list'` to get pagination wrapped in an unordered list for easier styling.
+>- Customize `prev_text` and `next_text` to improve navigation and match your site's language and theme.
+
+**Example in Practice:**
+```php
+echo paginate_links( array(
+    'base'    => get_pagenum_link(1) . '%_%',
+    'format'  => '?paged=%#%',
+    'current' => max(1, get_query_var('paged')),
+    'total'   => $wp_query->max_num_pages,
+    'prev_text' => __('« Previous'),
+    'next_text' => __('Next »'),
+) );
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>the_author_posts_link()</strong></summary>
+
+**Purpose:**
+>Displays a link to the author’s archive page. The link typically contains the author's name and links to a list of all posts written by that author.
+
+**Parameter**
+>This function does not accept any parameters.
+
+**Usage:**
+>- Use this function in post templates (e.g., `single.php`, `archive.php`) to provide users an easy way to find more posts by the author.
+>- Combine it with `get_the_author()` if you want to display more detailed information alongside the author link (like a bio).
+
+**Example in Practice:**
+```php
+<?php the_author_posts_link(); ?>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>the_time()</strong></summary>
+
+**Purpose:**
+>Displays the time the post was published, formatted according to a specific date and time format.
+
+**Parameter**
+>`$format` (optional): A string representing the format in which you want to display the time. If not provided, it defaults to the format set in the WordPress admin under **Settings** → **General**.
+
+**Usage:**
+>- Customize the format to match the style of your site and locale. Common formats include:
+>     - `'F j, Y'`: Full date (e.g., July 7, 2024).
+>     - `'g:i a'`: Time in 12-hour format (e.g., 10:30 am).
+>     - `'Y-m-d'`: ISO date format (e.g., 2024-07-07).
+>- If you need both the date and time, consider using `the_date()` and `the_time()` together, as `the_time()` will only display the time portion.
+
+**Example in Practice:**
+```php
+<?php the_time('F j, Y'); ?>  <!-- Displays: July 7, 2024 -->
+<?php the_time('g:i a'); ?>   <!-- Displays: 10:30 am -->
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_the_category_list()</strong></summary>
+
+**Purpose:**
+>Retrieves a list of categories associated with the current post. The categories are returned as a string of links, each linking to its respective category archive page.
+
+**Parameter**
+>- `$separator` (string, optional): The string to separate each category. Defaults to a comma `,`.
+>- `$parents` (string, optional): How to handle parent categories. Possible values are:
+>     - `'multiple'`: Show each parent category multiple times.
+>     - `'single'`: Only show the parent category once.
+>     - `'both'`: Show both the parent and the sub-category.
+
+**Usage:**
+>- Use a custom separator if you want the categories to be separated by something other than a comma (e.g., a bullet point or line break).
+>- Use this function in post templates where you want to show the categories a post belongs to, typically below the post title or after the content.
+>- Ensure the output is escaped with `esc_html()` or `esc_url()` when displaying on the front end to avoid any potential security issues.
+
+**Example in Practice:**
+```php
+<?php echo get_the_category_list(', '); ?>
+```
+</details>
