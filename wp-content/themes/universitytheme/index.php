@@ -1,6 +1,4 @@
-<?php
-
-get_header(); ?>
+<?php get_header(); ?>
 
 <div class="page-banner">
  <div class="page-banner__bg-banner"></div>
@@ -29,9 +27,8 @@ get_header(); ?>
    </div>
   </div>
  <?php }
+ echo paginate_links();
  ?>
 </div>
 
-<?php get_footer();
-
-?>
+<?php get_footer(); ?>
