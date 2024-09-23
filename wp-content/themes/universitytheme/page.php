@@ -24,38 +24,38 @@ while (have_posts()) {
         <p>
           <a class="metabox__blog-home-link" href="<?php echo get_permalink($theParentPage); ?>"><i class="fa fa-home" aria-hidden="true"></i> Back to <?php echo get_the_title($theParentPage); ?></a> <span class="metabox__main"><?php the_title(); ?></span>
         </p>
-      <?php }
-      ?>
       </div>
+    <?php }
+    ?>
 
-      <?php
-      $testIfParentPageArray = get_pages(array(
-        'child_of' => get_the_ID()
-      ));
+    <?php
+    $testIfParentPageArray = get_pages(array(
+      'child_of' => get_the_ID()
+    ));
 
-      if ($theParentPage || $testIfParentPageArray) { ?>
-        <div class="page-links">
-          <h2 class="page-links__title"><a href="<?php echo get_permalink($theParentPage) ?>"><?php echo get_the_title($theParentPage); ?></a></h2>
-          <ul class="min-list">
-            <?php
-            if ($theParentPage) {
-              $findChildOf = $theParentPage;
-            } else {
-              $findChildOf = get_the_ID();
-            }
-            wp_list_pages(array(
-              'title_li' => NULL,
-              'child_of' => $findChildOf,
-              'sort_column' => 'menu_order'
-            ));
-            ?>
-          </ul>
-        </div>
-      <?php } ?>
-
-      <div class="generic-content">
-        <?php the_content(); ?>
+    if ($theParentPage || $testIfParentPageArray) { ?>
+      <div class="page-links">
+        <h2 class="page-links__title"><a href="<?php echo get_permalink($theParentPage) ?>"><?php echo get_the_title($theParentPage); ?></a></h2>
+        <ul class="min-list">
+          <?php
+          if ($theParentPage) {
+            $findChildOf = $theParentPage;
+          } else {
+            $findChildOf = get_the_ID();
+          }
+          wp_list_pages(array(
+            'title_li' => NULL,
+            'child_of' => $findChildOf,
+            'sort_column' => 'menu_order'
+          ));
+          ?>
+        </ul>
       </div>
+    <?php } ?>
+
+    <div class="generic-content">
+      <?php the_content(); ?>
+    </div>
   </div>
 
 <?php }
