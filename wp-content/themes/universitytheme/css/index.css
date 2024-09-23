@@ -1,0 +1,29 @@
+.page-section .post-item .headline {
+ margin: 2.5rem 0 1.5rem;
+}
+
+.page-section .post-item .headline a {
+ font-size: 2rem;
+}
+
+.metabox {
+ padding: 1rem 1.5rem;
+ background-color: var(--tertiary-color);
+ width: max-content;
+ border-radius: 5px;
+}
+
+.metabox p {
+ color: var(--global-secondary-color);
+}
+
+.post-item .generic-content p {
+ margin-block: 2rem;
+}
+
+.btn-primary {
+ padding: 1rem 2rem;
+ background-color: var(--primary-color);
+ color: var(--global-secondary-color);
+ border-radius: 3px;
+}

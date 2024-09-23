@@ -31,7 +31,7 @@
  width: 30%;
  margin: 0 0 1.5rem 1.5rem;
  position: relative;
- z-index: -1;
+ z-index: 0;
 }
 
 .page-links__title {
@@ -41,11 +41,11 @@
  margin: 0;
 }
 
-.metabox {
+.metabox--position-up {
  margin-bottom: 2rem;
 }
 
-.metabox p {
+.metabox--position-up p {
  display: flex;
 }
 
@@ -87,8 +87,4 @@
 .min-list li a,
 .page-links__title a {
  color: var(--global-secondary-color);
-}
-
-.page-section {
- padding-block: 3rem;
 }
