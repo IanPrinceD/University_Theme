@@ -5,6 +5,7 @@
  left: 0;
  background-color: var(--global-secondary-color);
  padding-block: 1rem;
+ z-index: 99;
 }
 
 .header-container,

@@ -9,6 +9,7 @@ function my_theme_assets()
  wp_enqueue_style('page_css', get_theme_file_uri('./css/page.css'));
  wp_enqueue_style('header_css', get_theme_file_uri('./css/header.css'));
  wp_enqueue_style('footer_css', get_theme_file_uri('./css/footer.css'));
+ wp_enqueue_style('index_css', get_theme_file_uri('./css/index.css'));
 }
 add_action('wp_enqueue_scripts', 'my_theme_assets');
 

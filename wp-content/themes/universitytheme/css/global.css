@@ -56,3 +56,19 @@ h1 {
 .footer-container {
  padding: 1.5rem 3rem;
 }
+
+body.page-child .container .main-container .page-section {
+ padding-block: 3rem;
+}
+
+body.blog .container .main-container .page-section {
+ padding: 5.5rem 0 3rem;
+}
+
+body.page-parent .container .main-container .page-section {
+ padding-top: 8rem;
+}
+
+body.page-parent .container .main-container .generic-content {
+ padding-bottom: 3rem;
+}
