@@ -967,3 +967,135 @@ echo paginate_links( array(
 <?php echo get_the_category_list(', '); ?>
 ```
 </details>
+
+<br>
+
+<details>
+<summary><strong>is_category()</strong></summary>
+
+**Purpose:**
+>Determines whether the current page is a category archive. This function is commonly used in templates to check if the current query is for a category archive page, allowing you to conditionally display content or apply specific behavior based on the category.
+
+**Parameter**
+>`$category` (mixed, optional): You can specify a category by its ID, slug, or name. If no argument is passed, the function simply checks whether the current page is any category archive.
+
+**Usage:**
+>- Use `is_category()` to conditionally display different layouts, messages, or ads on category archive pages.
+>- Combine `is_category()` with other conditional tags like `is_single()` or `is_page()` to create complex conditional logic for templates.
+>- When targeting a specific category, it's generally better to use the slug rather than the category name to avoid issues if the category name changes.
+
+
+**Example in Practice:**
+```php
+// 1. Check if any category archive page is being viewed:
+if ( is_category() ) {
+    // Code to display if any category archive is being viewed
+}
+
+// 2. Check if a specific category archive is being viewed by ID:
+if ( is_category( 5 ) ) {
+    // Code to display if the category with ID 5 is being viewed
+}
+
+// 3. Check if a specific category archive is being viewed by slug:
+if ( is_category( 'news' ) ) {
+    // Code to display if the 'news' category archive is being viewed
+}
+
+// 4. Check if a specific category archive is being viewed by name:
+if ( is_category( 'Latest News' ) ) {
+    // Code to display if the 'Latest News' category archive is being viewed
+}
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>single_cat_title()</strong></summary>
+
+**Purpose:**
+>Displays or retrieves the name (title) of the current category being viewed. It’s used on category archive pages to show the category title.
+
+**Parameter**
+>- `$prefix` (string, optional): A string to display before the category title (e.g., “Category: ”). Defaults to an empty string.
+>- `$display` (bool, optional): If `true`, the title is echoed (displayed), otherwise it is returned as a string. Defaults to `true`.
+
+**Usage:**
+>- Use this in `category.php` or a generic `archive.php` template when you need to display the current category’s name.
+>- Combine this with other conditional tags like `is_category()` to customize your page titles or breadcrumbs for category archives.
+
+
+**Example in Practice:**
+```php
+// 1. Display the category title:
+<?php single_cat_title(); ?>
+
+// 2. Display the category title with a prefix:
+<?php single_cat_title('Category: '); ?>
+
+// 3. Retrieve the category title as a string:
+<?php $cat_title = single_cat_title('', false); ?>
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>is_author()</strong></summary>
+
+**Purpose:**
+>Checks if the current page is an author archive page. It returns `true` if you are viewing an archive page listing all posts by a specific author, and `false` otherwise.
+
+**Parameter**
+>`$author` (optional): You can specify an author by their ID, user login, or user slug. If no argument is passed, the function checks whether the current query is for any author archive.
+
+**Usage:**
+>- Use `is_author()` when you want to customize the author archive page. Combine it with `get_the_author_meta()` to display more information about the author.
+>- Use in your `author.php` template or in a generic archive template to conditionally style or display content based on the author being viewed.
+
+
+**Example in Practice:**
+```php
+// 1. Check if you are on any author archive page:
+if ( is_author() ) {
+    // Display content for the author archive
+}
+
+// 2. Check if you are on a specific author's archive page (by ID):
+if ( is_author( 7 ) ) {
+    // Display content for the author with ID 7
+}
+
+// 3. Check if you are on a specific author's archive page (by user login):
+if ( is_author( 'johndoe' ) ) {
+    // Display content for the author with user login 'johndoe'
+}
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>the_archive_description()</strong></summary>
+
+**Purpose:**
+>Displays the description for the current archive (category, tag, custom taxonomy, or author). This is useful for adding context to archive pages, especially when an author bio or category description has been set.
+
+**Parameter**
+>- `$before` (string, optional): Content to display before the description (e.g., `<p>`, `<div>`, etc.).
+>- `$after` (string, optional): Content to display after the description (e.g., `</p>`, `</div>`, etc.).
+
+**Usage:**
+>- Use this function in archive templates like `category.php`, `tag.php`, `author.php`, or `taxonomy.php` to display helpful descriptions that improve user understanding or SEO.
+>- Combine this with `the_archive_title()` for a more complete archive page heading section.
+
+**Example in Practice:**
+```php
+// 1. Display the archive description with default formatting:
+<?php the_archive_description(); ?>
+
+// 2. Display the archive description wrapped in custom HTML:
+<?php the_archive_description('<div class="archive-desc">', '</div>'); ?>
+```
+</details>
