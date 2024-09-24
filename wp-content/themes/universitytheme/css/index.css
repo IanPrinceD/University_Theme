@@ -18,7 +18,8 @@
  color: var(--global-secondary-color);
 }
 
-.metabox p a {
+.metabox p a,
+p .metabox__main a {
  font-weight: 500;
  color: var(--global-secondary-color);
 }
