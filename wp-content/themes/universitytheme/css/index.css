@@ -3,7 +3,8 @@
 }
 
 .page-section .post-item .headline a {
- font-size: 2rem;
+ font-size: 4rem;
+ font-weight: 300;
 }
 
 .metabox {
@@ -14,6 +15,11 @@
 }
 
 .metabox p {
+ color: var(--global-secondary-color);
+}
+
+.metabox p a {
+ font-weight: 500;
  color: var(--global-secondary-color);
 }
 

@@ -1,0 +1,4 @@
+.page-banner__title span {
+ color: var(--global-secondary-color);
+ font-size: 7rem;
+}
