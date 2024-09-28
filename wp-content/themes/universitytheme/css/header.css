@@ -1,11 +1,23 @@
+body.home .header {
+ background-color: transparent;
+}
+
+body.home .nav-container div .menu .menu-item a {
+ color: var(--global-secondary-color);
+}
+
+body.home .nav-container div .menu .menu-item .sub-menu a {
+ color: var(--global-primary-color);
+}
+
 .header {
  width: 100%;
  position: fixed;
  top: 0;
  left: 0;
- background-color: var(--global-secondary-color);
  padding-block: 1rem;
  z-index: 99;
+ background-color: var(--global-secondary-color);
 }
 
 .header-container,
