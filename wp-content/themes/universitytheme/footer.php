@@ -1,6 +1,6 @@
  </main>
  <footer class="footer">
-  <div class="footer-container">
+  <div class="footer-container g-container">
    <div class="footer-wrapper">
     <div class="footer-logo-container">
      <a href="#" class="footer-logo-link">

@@ -40,9 +40,7 @@ h1 {
  font-size: 7rem;
 }
 
-.header-container,
-.footer-container,
-.main-container {
+.g-container {
  max-width: 112rem;
  width: 100%;
  margin-inline: auto;
@@ -63,4 +61,10 @@ h1 {
 
 .page-section {
  margin: 8rem 0 4rem;
+}
+
+.btn {
+ padding: 0.5rem 2rem;
+ color: var(--global-secondary-color);
+ border-radius: 5px;
 }
