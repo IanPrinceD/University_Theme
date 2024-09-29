@@ -73,33 +73,26 @@ body.home .nav-container div .menu .menu-item .sub-menu a {
  padding-block: 0.5rem;
 }
 
-.nav-utilities .login,
-.nav-utilities .signup,
-.search-trigger .fa-magnifying-glass {
+.login,
+.signup,
+.fa-magnifying-glass {
  padding: 0.5rem 1rem;
 }
 
-.login a,
-.signup a {
- padding: 0.5rem 2rem;
- color: var(--global-secondary-color);
- border-radius: 5px;
-}
-
-.login a {
+.btn-login {
  background-color: var(--primary-color);
 }
 
-.signup a {
+.btn-signup {
  background-color: var(--tertiary-color);
 }
 
-.login a:hover {
+.btn-login:hover {
  background-color: var(--tertiary-color);
  transition: 300ms;
 }
 
-.signup a:hover {
+.btn-signup:hover {
  background-color: var(--primary-color);
  transition: 300ms;
 }

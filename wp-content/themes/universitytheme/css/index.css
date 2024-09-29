@@ -29,8 +29,5 @@ p .metabox__main a {
 }
 
 .btn-primary {
- padding: 1rem 2rem;
  background-color: var(--primary-color);
- color: var(--global-secondary-color);
- border-radius: 3px;
 }
