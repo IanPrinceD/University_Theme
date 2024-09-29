@@ -11,6 +11,7 @@ function my_theme_assets()
  wp_enqueue_style('footer_css', get_theme_file_uri('./css/footer.css'));
  wp_enqueue_style('index_css', get_theme_file_uri('./css/index.css'));
  wp_enqueue_style('archive_css', get_theme_file_uri('./css/archive.css'));
+ wp_enqueue_style('front-page_css', get_theme_file_uri('./css/front-page.css'));
 }
 add_action('wp_enqueue_scripts', 'my_theme_assets');
 

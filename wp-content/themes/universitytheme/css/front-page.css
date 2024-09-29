@@ -1,0 +1,62 @@
+body.home .page-banner {
+ margin-top: 14rem;
+}
+
+body.home .page-banner__bg-banner {
+ height: 44rem;
+}
+
+.t-center {
+ text-align: center;
+}
+
+.headline {
+ color: var(--global-secondary-color);
+ font-weight: 400;
+}
+
+.headline--large {
+ font-size: 9rem;
+}
+
+.headline--medium {
+ font-size: 4.25rem;
+}
+
+.headline--small {
+ font-size: 2.75rem;
+ margin-block: 1rem;
+}
+
+h3 strong {
+ color: var(--global-secondary-color);
+ font-size: 2.75rem;
+ font-weight: 500;
+}
+
+.btn--large {
+ font-size: 2.75rem;
+}
+
+.btn--blue {
+ background-color: var(--primary-color);
+}
+
+.home-page-content {
+ margin: 4rem 0 3rem;
+}
+
+.full-width-split {
+ display: flex;
+}
+
+.full-width-split__one {
+ flex: 1;
+ padding: 3rem;
+}
+
+.full-width-split__two {
+ flex: 1;
+ padding: 3rem;
+ background-color: var(--primary-color);
+}
