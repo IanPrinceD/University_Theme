@@ -67,8 +67,16 @@ a {
  margin: 8rem 0 4rem;
 }
 
-.btn {
+.btn, .btn-g {
  padding: 0.5rem 2rem;
  color: var(--global-secondary-color);
  border-radius: 5px;
+}
+
+.btn {
+ padding: 0.5rem 2rem;
+}
+
+.btn-g {
+ padding: 1.5rem 2rem;
 }
