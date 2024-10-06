@@ -14,7 +14,6 @@
  list-style: none;
  scroll-behavior: smooth;
  font-family: var(--primary-font);
- color: var(--global-primary-color);
  font-size: 1.4rem;
  padding: 0;
  margin: 0;
@@ -25,6 +24,7 @@ body {
  font-size: 62.5%;
  height: 100%;
  margin: 0 !important;
+ color: var(--global-primary-color);
 }
 
 h1,
@@ -38,6 +38,10 @@ h6 {
 
 h1 {
  font-size: 7rem;
+}
+
+a {
+ color: initial;
 }
 
 .g-container {

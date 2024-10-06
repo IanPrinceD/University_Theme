@@ -2,7 +2,7 @@
 
 <div class="page-banner">
  <div class="page-banner__bg-banner"></div>
- <div class="page-banner__content container t-center">
+ <div class="page-banner__content container c-white t-center">
   <h1 class="headline headline--large">Welcome!</h1>
   <h2 class="headline headline--medium">
    We think you&rsquo;ll like it here.
@@ -56,7 +56,7 @@
     </div>
 
     <p class="t-center no-margin">
-     <a href="#" class="btn btn--blue">View All Events</a>
+     <a href="#" class="btn btn--medium btn--blue">View All Events</a>
     </p>
    </div>
   </div>
@@ -100,7 +100,7 @@
     </div>
 
     <p class="t-center no-margin">
-     <a href="#" class="btn btn--yellow">View All Blog Posts</a>
+     <a href="#" class="btn btn--medium btn--blue">View All Blog Posts</a>
     </p>
    </div>
   </div>
