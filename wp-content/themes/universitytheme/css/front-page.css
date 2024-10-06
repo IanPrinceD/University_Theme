@@ -3,7 +3,7 @@ body.home .page-banner {
 }
 
 body.home .page-banner__bg-banner {
- height: 44rem;
+ height: 48rem;
 }
 
 .t-center {
@@ -53,6 +53,10 @@ h3 strong {
  background-color: var(--primary-color);
 }
 
+.spacing-small {
+ margin-bottom: 4rem;
+}
+
 .home-page-content {
  margin: 4rem 0 3rem;
 }
@@ -64,7 +68,7 @@ h3 strong {
 .full-width-split__one,
 .full-width-split__two {
  flex: 1;
- padding: 3rem;
+ padding: 5rem 3rem 3rem;
 }
 
 .event-summary {
