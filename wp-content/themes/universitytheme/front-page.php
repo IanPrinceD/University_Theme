@@ -11,7 +11,7 @@
    Why don&rsquo;t you check out the <strong>major</strong> you&rsquo;re
    interested in?
   </h3>
-  <a href="#" class="btn btn--large btn--blue">Find Your Major</a>
+  <a href="#" class="btn-g btn--large btn--blue">Find Your Major</a>
  </div>
 </div>
 
@@ -41,7 +41,11 @@
         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
        </h5>
        <p>
-        <?php echo wp_trim_words(get_the_content(), 10) ?>
+        <?php if (has_excerpt()) {
+         echo get_the_excerpt();
+        } else {
+         echo wp_trim_words(get_the_content(), 10);
+        } ?>
         <a href="<?php the_permalink(); ?>" class="nu gray">Learn more</a>
        </p>
       </div>
@@ -51,7 +55,7 @@
     ?>
 
     <p class="t-center no-margin">
-     <a href="#" class="btn btn--medium btn--blue">View All Events</a>
+     <a href="<?php echo get_post_type_archive_link('event'); ?>" class="btn-g btn--medium btn--blue">View All Events</a>
     </p>
    </div>
   </div>
@@ -77,7 +81,11 @@
         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
        </h5>
        <p>
-        <?php echo wp_trim_words(get_the_content(), 10) ?>
+        <?php if (has_excerpt()) {
+         echo get_the_excerpt();
+        } else {
+         echo wp_trim_words(get_the_content(), 10);
+        } ?>
         <a href="<?php the_permalink(); ?>" class="nu gray">Read more</a>
        </p>
       </div>
@@ -87,7 +95,7 @@
     ?>
 
     <p class="t-center no-margin">
-     <a href="<?php echo site_url('/blog'); ?>" class="btn btn--medium btn--blue">View All Blog Posts</a>
+     <a href="<?php echo site_url('/blog'); ?>" class="btn-g btn--medium btn--blue">View All Blog Posts</a>
     </p>
    </div>
   </div>
