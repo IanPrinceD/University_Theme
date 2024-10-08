@@ -3,18 +3,34 @@
 <div class="page-banner">
  <div class="page-banner__bg-banner"></div>
  <div class="page-banner__content container container--narrow">
-  <h1 class="page-banner__title">All Events</h1>
+  <h1 class="page-banner__title">Past Events</h1>
   <div class="page-banner__intro">
-   <p>See whats is going on in our world.</p>
+   <p>A recap of our past events.</p>
   </div>
  </div>
 </div>
 
 <div class="container container--narrow page-section">
  <?php
+$today = date('Ymd');
+$pastEvents = new WP_Query(array(
+ 'paged' => get_query_var('paged', 1),
+ 'post_type' => 'event',
+ 'meta_key' => 'event_date',
+ 'orderby' => 'meta_value_num',
+ 'order' => 'ASC',
+ 'meta_query' => array(
+  array(
+   'key' => 'event_date',
+   'compare' => '<=',
+   'value' => $today,
+   'type' => 'numeric'
+  )
+ )
+));
 
- while (have_posts()) {
-  the_post(); ?>
+ while ($pastEvents->have_posts()) {
+  $pastEvents->the_post(); ?>
   <div class="event-summary">
    <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
     <span class="event-summary__month"><?php
@@ -31,7 +47,7 @@
      <?php if (has_excerpt()) {
       echo get_the_excerpt();
      } else {
-      echo wp_trim_words(get_the_content(), 25);
+      echo wp_trim_words(get_the_content(), 23);
      } ?>
      <a href="<?php the_permalink(); ?>" class="nu gray">Learn more</a>
     </p>
@@ -39,12 +55,10 @@
   </div>
 
  <?php }
- echo paginate_links();
+ echo paginate_links(array(
+  'total' => $pastEvents->max_num_pages
+ ));
  ?>
-
- <hr class="section-break">
-
- <p>Looking for a recap of past events? <a href="<?php site_url('/past-events') ?>">Check out our past events archive.</a></p>
 </div>
 
 <?php get_footer(); ?>
