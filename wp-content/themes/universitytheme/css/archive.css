@@ -2,3 +2,18 @@
  color: var(--global-secondary-color);
  font-size: 7rem;
 }
+
+.section-break {
+ margin: 6.5rem auto 3rem;
+ width: 80%;
+ height: .2rem;
+ border: 1px solid var(--secondary-color);
+}
+
+.colored-link {
+ color: var(--primary-color);
+}
+
+.wf {
+ font-weight: 500;
+}
