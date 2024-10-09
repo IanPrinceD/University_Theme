@@ -1099,3 +1099,300 @@ if ( is_author( 'johndoe' ) ) {
 <?php the_archive_description('<div class="archive-desc">', '</div>'); ?>
 ```
 </details>
+
+<br>
+
+<details>
+<summary><strong>WP_Query()</strong></summary>
+
+**Purpose:**
+>A powerful class used for creating custom queries in WordPress. It allows you to retrieve posts or other post types based on a wide variety of parameters such as categories, tags, custom fields, post types, and more.
+
+**Parameter**
+>- The `$args` array specifies the query parameters. Some common ones include:
+>   - `post_type`: Specifies the type of posts (e.g., 'post', 'page', 'custom_post_type').
+>   - `category_name`: Name of the category to retrieve posts from.
+>   - `posts_per_page`: Number of posts to display.
+>   - `paged`: Page number for paginated results.
+>   - `meta_query`: An array for custom field queries.
+>   - `orderby`: How to order posts (e.g., 'date', 'title').
+
+**Usage:**
+>- Always use `wp_reset_postdata()` after a custom query to avoid interfering with the main loop.
+>- Use `WP_Query` for complex or customized queries, but use simpler functions like `get_posts()` or `query_posts()` for basic queries to optimize performance.
+
+**Example in Practice:**
+```php
+$args = array(
+    'post_type'      => 'post',
+    'posts_per_page' => 5,
+    'category_name'  => 'news',
+);
+$custom_query = new WP_Query($args);
+
+if ($custom_query->have_posts()) {
+    while ($custom_query->have_posts()) {
+        $custom_query->the_post();
+        // Display the post content
+    }
+} else {
+    echo 'No posts found';
+}
+
+wp_reset_postdata();  // Always reset post data after custom queries
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>has_excerpt()</strong></summary>
+
+**Purpose:**
+>Checks whether the current post has a manually written excerpt. It returns true if the post has an excerpt and false otherwise.
+
+**Parameter**
+>This function does not accept any parameters.
+
+**Usage:**
+>- Use `has_excerpt()` to conditionally display a manually written excerpt or to generate an automatic excerpt if none is available.
+>- Pair this function with `the_excerpt()` to provide fallback behavior for posts without custom excerpts.
+
+**Example in Practice:**
+```php
+if ( has_excerpt() ) {
+    // Display custom excerpt
+} else {
+    // Fallback content
+}
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_the_excerpt()</strong></summary>
+
+**Purpose:**
+>Retrieves the post’s excerpt. If a manual excerpt is not available, it will generate an automatic excerpt by trimming the post content.
+
+**Parameter**
+>- `$post` (optional): The post object or post ID. If not specified, it defaults to the current post.
+
+**Usage:**
+>- Use this function when you need to retrieve and display excerpts without printing them directly (useful when customizing output or combining it with other functions).
+>- You can also filter the length and more via `excerpt_length` and `excerpt_more` filters.
+
+**Example in Practice:**
+```php
+$excerpt = get_the_excerpt();
+echo $excerpt;
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_post_type_archive_link()</strong></summary>
+
+**Purpose:**
+>Retrieves the URL for the archive page of a specified post type. It’s useful when you need to create a link to a custom post type archive.
+
+**Parameter**
+>- `$post_type` (string, required): The slug of the post type you want to get the archive link for.
+
+**Usage:**
+>- Use this in templates or menus when you need to link directly to a custom post type’s archive page.
+>- Make sure the custom post type has the `'has_archive'` argument set to `true` when registering it, otherwise this function won’t return an archive link.
+
+**Example in Practice:**
+```php
+$archive_link = get_post_type_archive_link('product');
+echo '<a href="' . $archive_link . '">View Products</a>';
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>wp_reset_postdata()</strong></summary>
+
+**Purpose:**
+>Restores the global $post variable to the main query after a custom WP_Query loop. This ensures that subsequent template tags (like the_title() or the_content()) work correctly with the main loop’s posts.
+
+**Parameter**
+>This function does not accept any parameters.
+
+**Usage:**
+>- Always call `wp_reset_postdata()` after using `WP_Query` or any custom loop to avoid issues with the global post data.
+
+**Example in Practice:**
+```php
+$args = array(
+    'post_type' => 'post',
+    'posts_per_page' => 5,
+);
+$custom_query = new WP_Query($args);
+
+if ($custom_query->have_posts()) {
+    while ($custom_query->have_posts()) {
+        $custom_query->the_post();
+        // Display the post content
+    }
+}
+
+wp_reset_postdata();  // Resets the global $post variable back to the main query
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>register_post_type()</strong></summary>
+
+**Purpose:**
+>Registers a custom post type in WordPress. You can use this function to create new post types like 'Products', 'Events', or any other type of content you need beyond the default 'post' and 'page'.
+
+**Parameter**
+>- `$post_type` (string, required): The unique identifier (slug) for the custom post type.
+>- `$args` (array, required): An array of arguments to define how the post type behaves. Key arguments include:
+>   - `label`: A human-readable name for the post type.
+>   - `public`: Whether the post type is public.
+>   - `has_archive`: Whether the post type has an archive page.
+>   - `supports`: Features like title, editor, custom fields, etc.
+
+**Usage:**
+>- Always register custom post types in the `init` action hook to ensure they are properly initialized.
+>- Be descriptive when naming your custom post type and ensure the slug is unique to avoid conflicts.
+>- Use `'rewrite' => array('slug' => 'custom-slug')` if you want a custom URL structure for the post type.
+
+**Example in Practice:**
+```php
+function create_custom_post_type() {
+    $args = array(
+        'label'         => 'Products',
+        'public'        => true,
+        'has_archive'   => true,
+        'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'menu_icon'     => 'dashicons-cart',
+    );
+    register_post_type('product', $args);
+}
+add_action('init', 'create_custom_post_type');
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_the_content()</strong></summary>
+
+**Purpose:**
+>Retrieves the full post content. Unlike `the_content()`, this function returns the content instead of directly displaying it, allowing you to manipulate or customize the output.
+
+**Parameter**
+>- `$more_link_text` (string, optional): Text to display for "read more" links when a post is split by the `<!--more-->` tag. Defaults to `null`.
+>- `$strip_teaser` (bool, optional): Whether to remove the teaser part of the post before the `<!--more-->` tag. Defaults to `false`.
+
+**Usage:**
+>- Use `get_the_content()` when you need the full post content for custom manipulation, rather than immediately displaying it.
+>- If you need to filter or apply formatting (such as applying shortcodes or automatic paragraphs), you can pass the content through functions like `apply_filters('the_content', $content)`.
+
+**Example in Practice:**
+```php
+$content = get_the_content();
+echo $content;
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>is_admin()</strong></summary>
+
+**Purpose:**
+>Determines if the current request is for an admin page. It returns `true` if the request is within the WordPress admin panel (`wp-admin`) and `false` if it’s a front-end request.
+
+**Parameter**
+>This function does not accept any parameters.
+
+**Usage:**
+>- Use `is_admin()` when you need to target admin-specific logic, such as enqueueing scripts or handling admin-only functionality.
+>- This function is often used in combination with hooks like `admin_enqueue_scripts` or to conditionally run code in `functions.php`.
+
+**Example in Practice:**
+```php
+if ( is_admin() ) {
+    // Code to run only in the admin area
+}
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>is_main_query()</strong></summary>
+
+**Purpose:**
+>Checks whether the current query is the main WordPress query. This is useful when customizing queries in WordPress, as it helps differentiate between the main query and custom queries (e.g., created with `WP_Query()`).
+
+**Parameter**
+>This function does not accept any parameters.
+
+**Usage:**
+>- Always use `is_main_query()` inside the `pre_get_posts` hook to ensure you’re modifying the main query and not any secondary or custom queries (like sidebar widgets or related posts).
+>- This function is especially important in themes and plugins where you may be working with multiple queries on the same page.
+
+**Example in Practice:**
+```php
+// 1. Check if it's the main query:
+if ( is_main_query() ) {
+    // This is the main query
+}
+
+// 2. Use it within the `pre_get_posts` action to modify the main query:
+function modify_main_query( $query ) {
+    if ( is_home() && $query->is_main_query() ) {
+        $query->set( 'posts_per_page', 10 ); // Modify the main query on the home page
+    }
+}
+add_action( 'pre_get_posts', 'modify_main_query' );
+```
+</details>
+
+<br>
+
+<details>
+<summary><strong>get_query_var()</strong></summary>
+
+**Purpose:**
+>Retrieves a public query variable (a parameter from the current query) based on its key. It’s commonly used to get custom query variables, pagination information, or values like category slugs, page numbers, etc.
+
+**Parameter**
+>- `$var` (string, required): The name of the query variable you want to retrieve (e.g., 'paged', 'category_name').
+>- `$default` (mixed, optional): The value to return if the query variable is not set. Defaults to an empty string.
+
+**Usage:**
+>- Use `get_query_var()` for pagination (`paged`), taxonomies (`category_name`, `tag`), or custom variables in templates and queries.
+>- You can add your own custom query variables using the `query_vars` filter, then retrieve them with `get_query_var()`.
+
+**Example in Practice:**
+```php
+// 1. Get the current page number (for pagination):
+$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+// 2. Get a custom query variable: If you’ve added a custom query variable using `add_query_var()`, you can retrieve its value like this:
+$my_custom_var = get_query_var('my_custom_var');
+
+
+// Additional example: Adding a custom query variable
+function add_custom_query_var( $vars ) {
+    $vars[] = 'custom_var';
+    return $vars;
+}
+add_filter( 'query_vars', 'add_custom_query_var' );
+
+// Retrieve it
+$custom_value = get_query_var('custom_var');
+```
+</details>
