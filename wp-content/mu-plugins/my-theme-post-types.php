@@ -18,6 +18,24 @@ function my_theme_post_types()
   ),
   'menu_icon' => 'dashicons-calendar-alt'
  ));
+
+ // Program Post Type
+ register_post_type('program', array(
+  'show_in_nav_menus' => true,
+  'supports' => array('title', 'editor'),
+  'rewrite' => array('slug' => 'programs'),
+  'has_archive' => true,
+  'public' => true,
+  'show_in_rest' => true,
+  'labels' => array(
+   'name' => 'Programs',
+   'add_new_item' => 'Add New Program',
+   'edit_item' => 'Edit Program',
+   'all_items' => 'All Programs',
+   'singular_name' => 'Program'
+  ),
+  'menu_icon' => 'dashicons-awards'
+ ));
 }
 
 add_action('init', 'my_theme_post_types');
