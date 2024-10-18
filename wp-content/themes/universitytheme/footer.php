@@ -3,14 +3,14 @@
   <div class="footer-container g-container">
    <div class="footer-wrapper">
     <div class="footer-logo-container">
-     <a href="#" class="footer-logo-link">
+     <a href="<?php echo site_url(); ?>" class="footer-logo-link">
       <img src="#" alt="Footer Logo">
      </a>
     </div>
     <nav class="footer-nav-container">
      <?php wp_nav_menu(array(
       'theme_location' => 'footerMenuPrimary'
-     )); 
+     ));
      ?>
     </nav>
     <div class="footer-info-container">
