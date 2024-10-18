@@ -12,7 +12,7 @@
           <header class="header">
                <div class="header-container g-container">
                     <div class="header-logo-container">
-                         <a class="header-logo-link" href="/"><img src="" alt="University Logo"></a>
+                         <a class="header-logo-link" href="<?php echo site_url();?>"><img src="" alt="University Logo"></a>
                     </div>
                     <div class="utility-container">
                          <nav class="nav-container">

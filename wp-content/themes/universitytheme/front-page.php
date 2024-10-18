@@ -11,7 +11,7 @@
    Why don&rsquo;t you check out the <strong>major</strong> you&rsquo;re
    interested in?
   </h3>
-  <a href="#" class="btn-g btn--large btn--blue">Find Your Major</a>
+  <a href="<?php echo get_post_type_archive_link('program'); ?>" class="btn-g btn--large btn--blue">Find Your Major</a>
  </div>
 </div>
 
